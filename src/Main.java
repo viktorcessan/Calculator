@@ -3,32 +3,63 @@
 import java.util.Scanner;  // Import the Scanner class
 
 public class Main {
+
+    public static void printMenue(){
+        System.out.println("Hello and welcome!");
+        System.out.println("Give me any number");
+    }
+    public static void promptCalculation(){
+        System.out.println("Would you like me to add, subtract, divide, or multiply the two? Or do all? (A/S/D/M/All)");
+    }
+    public static double addition(double firstuserNumber, double seconduserNumber) {
+        return firstuserNumber+seconduserNumber;
+    }
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        Scanner firstInput=new Scanner(System.in);
-        Scanner secondInput=new Scanner(System.in);
-        Scanner thirdInput=new Scanner(System.in);
+        Scanner userInput=new Scanner(System.in);
 
-        int firstuserNumber;
-        int seconduserNumber;
+        double firstuserNumber;
+        double seconduserNumber;
         String firstuserText;
-        int sum;
+        double sum;
 
-        System.out.println("Hello and welcome!");
-        System.out.println("Give me any number");
-        firstuserNumber=firstInput.nextInt();
+        printMenue();
+        firstuserNumber=userInput.nextDouble();
         System.out.println("Give me another number");
-        seconduserNumber=secondInput.nextInt();
+        seconduserNumber=userInput.nextDouble();
         System.out.println("The numbers you input were: "+firstuserNumber+" and "+seconduserNumber);
-        System.out.println("Would you like me to sum the two - Y/N?");
-        firstuserText=thirdInput.nextLine();
-        if (firstuserText.equals("Y")){
-            sum=firstuserNumber+seconduserNumber;
-            System.out.println("The sum is: "+sum);
+        userInput.nextLine();
+        promptCalculation();
+        firstuserText=userInput.nextLine();
+        if (firstuserText.equals("A")){
+           sum=addition(firstuserNumber, seconduserNumber);
+            System.out.println("The sum of the addition is: "+sum);
+        }
+        else if (firstuserText.equals("S")) {
+            sum=firstuserNumber - seconduserNumber;
+            System.out.println("The sum of the subtraction equals:" +sum);
+        }
+        else if (firstuserText.equals("D")){
+            sum=firstuserNumber / seconduserNumber;
+            System.out.println("The sum of the division equals:" + sum);
+        }
+        else if (firstuserText.equals("M")){
+            sum=firstuserNumber * seconduserNumber;
+            System.out.println("The sum of the multiplication equals:" +sum);
+        }
+        else if (firstuserText.equals("All")){
+            sum=firstuserNumber + seconduserNumber;
+            System.out.println("The sum of the addition is: "+sum);
+            sum=firstuserNumber - seconduserNumber;
+            System.out.println("The sum of the subtraction equals:" +sum);
+            sum=firstuserNumber / seconduserNumber;
+            System.out.println("The sum of the division equals:" + sum);
+            sum=firstuserNumber * seconduserNumber;
+            System.out.println("The sum of the multiplication equals:" +sum);
         }
         else {
-            System.out.println("Ok then, bye bye");
+            System.out.println("You didn't select A or S, bye bye");
         }
     }
 }
